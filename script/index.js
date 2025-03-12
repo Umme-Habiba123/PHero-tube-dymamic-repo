@@ -13,6 +13,14 @@ function loadVideos() {
     .then((data) => displayVideos(data.videos));
 }
 
+function loadCategoryVideo(id) {
+  const url = ` https://openapi.programming-hero.com/api/phero-tube/category/${id} `;
+  console.log(url);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayVideos(data.category));
+}
+
 function displayCategories(categories) {
   // console.log(categories);
   // get the container----
@@ -22,38 +30,49 @@ function displayCategories(categories) {
     // console.log(cat);
     const categoryDiv = document.createElement("div");
     categoryDiv.innerHTML = `
-    <button class="btn bg-gray-200 text-black btn-sm lg:p-6 hover:bg-[#ee1633] hover:text-white lg:text-2xl ">${cat.category}</button>
+    <button onclick="loadCategoryVideo(${cat.category_id})" class="btn bg-gray-200 text-black btn-sm lg:p-6 hover:bg-[#ee1633] hover:text-white lg:text-2xl ">${cat.category}</button>
     `;
     categoryContainer.append(categoryDiv);
   }
 }
 
 const displayVideos = (videos) => {
-   const videoContainer = document.getElementById('video-container');
-   videos.forEach(video => {
-    console.log(video)
-    
+  const videoContainer = document.getElementById("video-container");
 
-    const videoCard=document.createElement('div')
-    videoCard.innerHTML=`
-    <div class="card bg-base-100 w-74 shadow-sm">
-  <figure>
-    <img
-      src=${video.thumbnail}
-      alt="Shoes" />
-  </figure>
-  <div class="card-body">
-    <h2 class="card-title">${video.title}</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-primary">Buy Now</button>
-    </div>
-  </div>
-</div>
-    `
-    videoContainer.append(videoCard)
-   });
+  videoContainer.innerHTML = " ";
+  
+  videos.forEach((video) => {
+    console.log(video);
+
+    const videoCard = document.createElement("div");
+    videoCard.innerHTML = `
+       <div class="card bg-base-100 w-74">
+            <div class="relative">
+                <figure class="">
+                    <img class="rounded-lg" src=${video.thumbnail} alt="Shoes" />
+                </figure>
+                <span class="absolute bottom-2 px-2 right-4 text-white bg-black rounded-lg">3hrs 56 min ago</span>
+            </div>
+            <div class=" flex gap-4 mt-5">
+                <div class="avatar">
+                    <div class=" rounded-full w-20 h-20">
+                        <img class=""
+                            src="${video.authors[0].profile_picture}" />
+                    </div>
+                </div>
+                <div>
+                    <h2 class="card-title font-bold ">Building a Winning UX Strategy Using the Kano Model</p>
+                        <h4 class="text-[#817d7d] flex gap-1">  ${video.authors[0].profile_name}
+                            <img class="w-3 h-3" src="https://img.icons8.com/?size=48&id=SRJUuaAShjVD&format=png"
+                                alt="">
+                        </h4>
+                        <h5 class="text-[#817d7d]"> ${video.others.views} </h5>
+                </div>
+            </div>
+        </div>
+    `;
+    videoContainer.append(videoCard);
+  });
 };
 
 loadCategories();
-loadVideos();

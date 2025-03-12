@@ -10,11 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <style>
-        #category-container{
-          display: flex;
-          justify-content: center;
+        #category-container {
+            display: flex;
+            justify-content: center;
         }
- 
     </style>
 </head>
 
@@ -32,11 +31,14 @@
                     </div>
                 </div>
                 <div class="navbar-center">
-                    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl  bg-[#e5e3e3] border-none text-black lg:text-xl text-xs">Sort by view</button>
-                    
+                    <button
+                        class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl  bg-[#e5e3e3] border-none text-black lg:text-xl text-xs">Sort
+                        by view</button>
+
                 </div>
                 <div class="navbar-end">
-                    <button class="btn bg-[#e71c37] text-white p-5">Blog</button></div>
+                    <button class="btn bg-[#e71c37] text-white p-5">Blog</button>
+                </div>
                 </button>
             </div>
             </div>
@@ -45,16 +47,46 @@
         </nav>
     </header>
     <section id="category-container" class="button-section  items-center text-center mt-10 space-x-6">
-       <div>
-        <button class="btn rounded-sm bg-[#ee1633] text-white btn-sm lg:p-6 lg:text-2xl">
-            All
-        </button>
-        
-       </div>
+        <div>
+            <button onclick="loadVideos()" class="btn rounded-sm bg-[#ee1633]  text-white btn-sm lg:p-6 lg:text-2xl">
+                All
+            </button>
+
+        </div>
     </section>
     <section class=" grid grid-cols-4  mt-16 gap-8" id="video-container">
+        <!-- <div class="card bg-base-100 w-74 shadow-sm">
+
+            <div class="relative">
+                <figure class="">
+                    <img class="" src='https://i.ibb.co/DRxB1Wm/sunris.jpg' alt="Shoes" />
+                </figure>
+                <span class="absolute bottom-2 px-2 right-4 text-white bg-black rounded-lg">3hrs 56 min ago</span>
+            </div>
+            <div class=" flex gap-4 mt-5">
+                <div class="avatar">
+                    <div class=" rounded-full w-20 h-20">
+                        <img class=""
+                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                    </div>
+                </div>
+                <div>
+                    <h2 class="card-title font-bold ">Building a Winning UX Strategy Using the Kano Model</p>
+                        <h4 class="text-[#817d7d] flex gap-1">Awlad Hossain
+                            <img class="w-5 h-5" src="https://img.icons8.com/?size=48&id=SRJUuaAShjVD&format=png"
+                                alt="">
+                        </h4>
+                        <h5 class="text-[#817d7d]">91K views</h5>
+                </div>
+            </div>
+        </div> -->
+    <div class="col-span-full flex flex-col items-center mt-20 gap-10">
+        <img class=" h-52" src="./Assets/Icon.png" alt="">
+        <p class="font-bold text-4xl">Oops!! Sorry, There is no content here</p>
+    </div>
 
     </section>
+
 
     <script src="./script/index.js"></script>
 </body>
