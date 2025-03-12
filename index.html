@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH-Tube</title>
+    <!-- daisyUi -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        #category-container{
+          display: flex;
+          justify-content: center;
+        }
+ 
+    </style>
+</head>
+
+<body class="max-w-screen-xl mx-auto">
+    <header>
+        <nav class="px-2">
+            <div class="navbar bg-base-100 mt-10">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="">
+
+                            <img class="lg:w-30 lg:h-10 w-20 h-8" src="./Assets/Logo.png" alt="PH-tube logo">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="navbar-center">
+                    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl  bg-[#e5e3e3] border-none text-black lg:text-xl text-xs">Sort by view</button>
+                    
+                </div>
+                <div class="navbar-end">
+                    <button class="btn bg-[#e71c37] text-white p-5">Blog</button></div>
+                </button>
+            </div>
+            </div>
+            <br>
+            <hr class="text-gray-200">
+        </nav>
+    </header>
+    <section id="category-container" class="button-section  items-center text-center mt-10 space-x-6">
+       <div>
+        <button class="btn rounded-sm bg-[#ee1633] text-white btn-sm lg:p-6 lg:text-2xl">
+            All
+        </button>
+        
+       </div>
+    </section>
+    <section class=" grid grid-cols-4  mt-16 gap-8" id="video-container">
+
+    </section>
+
+    <script src="./script/index.js"></script>
+</body>
+
+</html>
