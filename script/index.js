@@ -16,9 +16,20 @@ function loadVideos() {
 function loadCategoryVideo(id) {
   const url = ` https://openapi.programming-hero.com/api/phero-tube/category/${id} `;
   console.log(url);
+
+
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayVideos(data.category));
+    .then((data) => {
+      const clickedButton=document.getElementById(`btn-${id}`)
+      clickedButton.classList.add('active')
+      console.log(clickedButton)
+      displayVideos(data.category)
+
+ 
+   
+    });
+   
 }
 
 function displayCategories(categories) {
@@ -26,11 +37,10 @@ function displayCategories(categories) {
   // get the container----
   const categoryContainer = document.getElementById("category-container");
   for (let cat of categories) {
-    // creat element
-    // console.log(cat);
+  
     const categoryDiv = document.createElement("div");
     categoryDiv.innerHTML = `
-    <button onclick="loadCategoryVideo(${cat.category_id})" class="btn bg-gray-200 text-black btn-sm lg:p-6 hover:bg-[#ee1633] hover:text-white lg:text-2xl ">${cat.category}</button>
+    <button id="btn-${cat.category_id}" onclick="loadCategoryVideo(${cat.category_id})" class="btn bg-gray-200 text-black btn-sm lg:p-6 hover:bg-[#ee1633] hover:text-white lg:text-2xl ">${cat.category}</button>
     `;
     categoryContainer.append(categoryDiv);
   }
@@ -40,13 +50,21 @@ const displayVideos = (videos) => {
   const videoContainer = document.getElementById("video-container");
 
   videoContainer.innerHTML = " ";
-  
+
+  if (videos.length == 0) {
+    videoContainer.innerHTML = ` <div class="col-span-full flex flex-col items-center mt-20 gap-10">
+        <img class=" h-52" src="./Assets/Icon.png" alt="">
+        <p class="font-bold text-4xl">Oops!! Sorry, There is no content here</p>
+    </div>`;
+    return;
+  }
+
   videos.forEach((video) => {
-    console.log(video);
+    // console.log(video);
 
     const videoCard = document.createElement("div");
     videoCard.innerHTML = `
-       <div class="card bg-base-100 w-74">
+       <div class="card bg-base-100 w-74 object-">
             <div class="relative">
                 <figure class="">
                     <img class="rounded-lg" src=${video.thumbnail} alt="Shoes" />
